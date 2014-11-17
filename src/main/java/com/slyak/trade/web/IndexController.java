@@ -1,0 +1,84 @@
+package com.slyak.trade.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+/**
+ * .
+ * <p/>
+ *
+ * @author <a href="mailto:stormning@163.com">ningzhou</a>
+ * @version V1.0, 2014/11/17
+ */
+
+@Controller
+public class IndexController {
+
+    /**
+     * 首页
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping("/")
+    public String index(Model model) {
+
+        //动态
+        //简介
+        //产品
+        //案例
+        return "index";
+    }
+
+    /**
+     * 关于:简介 理念 资质 动态
+     */
+    @RequestMapping("/about")
+    public String about() {
+        return "about";
+    }
+
+
+    /**
+     * 产品
+     */
+    @RequestMapping("/product")
+    public String product() {
+        return "product";
+    }
+
+    /**
+     * 工程案例
+     *
+     * @return
+     */
+    public String project() {
+        return "project";
+    }
+
+    /**
+     * 服务
+     *
+     * @return
+     */
+    public String service() {
+        return "service";
+    }
+
+
+    /**
+     * 联系我们
+     *
+     * @return
+     */
+    @RequestMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
+    @RequestMapping("/msg")
+    public String message() {
+        return "message";
+    }
+}
