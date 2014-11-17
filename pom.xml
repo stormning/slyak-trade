@@ -9,6 +9,7 @@
     <url>http://maven.apache.org</url>
     <properties>
         <spring-version>4.1.1.RELEASE</spring-version>
+        <tiles-version>3.0.5</tiles-version>
         <hibernate-version>4.3.5.Final</hibernate-version>
         <slf4j-version>1.7.7</slf4j-version>
         <logback-version>1.1.2</logback-version>
@@ -16,7 +17,6 @@
     </properties>
     <dependencies>
         <!--spring-->
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -44,6 +44,18 @@
             <version>1.7.1.RELEASE</version>
         </dependency>
 
+        <!--tiles-->
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-el</artifactId>
+            <version>${tiles-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-api</artifactId>
+            <version>${tiles-version}</version>
+        </dependency>
+
         <!--hibernate-->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -55,24 +67,13 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate-version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate-version}</version>
-        </dependency>
+
 
         <!--bonecp-->
         <dependency>
             <groupId>com.jolbox</groupId>
             <artifactId>bonecp</artifactId>
             <version>0.8.0.RELEASE</version>
-        </dependency>
-
-        <!--sitemesh-->
-        <dependency>
-            <groupId>org.sitemesh</groupId>
-            <artifactId>sitemesh</artifactId>
-            <version>3.0.0</version>
         </dependency>
 
         <!--slf4j-->
