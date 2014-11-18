@@ -21,15 +21,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../include.jsp" %>
-<html>
-<head>
-    <title>你好</title>
-</head>
-<content tag="tt">
-  我是内容2
+<title>你好</title>
+<content tag="js">
+  <script>
+    $(function () {
+      alert(111);
+    })
+  </script>
 </content>
-<content tag="uu">
-  内容3
-</content>
-</html>
-

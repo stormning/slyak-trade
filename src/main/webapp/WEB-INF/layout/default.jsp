@@ -3,10 +3,10 @@
 <html>
 <head>
     <title><sitemesh:write property='title'/></title>
+    <sitemesh:write property='page.css'/>
 </head>
 <body>
-<sitemesh:write property='page.tt'/>
-<sitemesh:write property='page.uu'/>
 <script src="${ctx}/static/js/jquery-1.11.1.js" type="text/javascript"></script>
+<sitemesh:write property='page.js'/>
 </body>
 </html>
