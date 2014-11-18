@@ -25,8 +25,11 @@
 <head>
     <title>你好</title>
 </head>
-<body>
-我是内容2
-</body>
+<content tag="tt">
+  我是内容2
+</content>
+<content tag="uu">
+  内容3
+</content>
 </html>
 

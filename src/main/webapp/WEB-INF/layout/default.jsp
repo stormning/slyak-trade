@@ -5,7 +5,8 @@
     <title><sitemesh:write property='title'/></title>
 </head>
 <body>
-<sitemesh:write property='body'/>
+<sitemesh:write property='page.tt'/>
+<sitemesh:write property='page.uu'/>
 <script src="${ctx}/static/js/jquery-1.11.1.js" type="text/javascript"></script>
 </body>
 </html>

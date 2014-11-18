@@ -40,7 +40,7 @@
     <!--SiteMeshFilter-->
     <filter>
         <filter-name>siteMeshFilter</filter-name>
-        <filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>
+        <filter-class>com.slyak.core.sitemesh.SlyakSiteMeshFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>characterEncodingFilter</filter-name>
