@@ -67,6 +67,7 @@ public class IndexController {
      *
      * @return
      */
+    @RequestMapping("/project")
     public String project() {
         return "project";
     }
@@ -76,6 +77,7 @@ public class IndexController {
      *
      * @return
      */
+    @RequestMapping("/service")
     public String service() {
         return "service";
     }
