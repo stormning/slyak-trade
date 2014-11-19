@@ -255,7 +255,7 @@
                             <port>8080</port>
                         </connector>
                     </connectors>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <scanIntervalSeconds>0</scanIntervalSeconds>
                 </configuration>
             </plugin>
         </plugins>

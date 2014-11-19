@@ -20,12 +20,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="../include.jsp" %>
+<%@ include file="../include.jsp" %>
 <title>你好</title>
 <content tag="js">
-  <script>
-    $(function () {
-      alert(111);
-    })
-  </script>
+    <script>
+        $(function () {
+            alert(1112347);
+        })
+    </script>
 </content>
