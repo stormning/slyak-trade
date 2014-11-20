@@ -16,6 +16,7 @@ package com.slyak.framework.bean;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.NoRepositoryBean;
@@ -30,5 +31,8 @@ import org.springframework.data.repository.NoRepositoryBean;
 @NoRepositoryBean
 public interface ContentRepo<T extends Content> extends JpaRepository<T, Long> {
     @Query("select c from #{#entityName} c where status=?2 and (c.title like ?1 or c.body like ?1)")
-    Page<T> findByKeyword(String keyword, Status status, Pageable pageable);
+    Page<T> findAll(String keyword, Status status, Pageable pageable);
+
+    @Query("select c from #{#entityName} c where status=?2")
+    Page<T> findAll(Status status, Sort sort);
 }

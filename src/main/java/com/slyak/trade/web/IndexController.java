@@ -42,8 +42,6 @@ public class IndexController {
      */
     @RequestMapping("/")
     public String index(Model model) {
-        articleRepo.findAll();
-
         //动态
         //简介
         //产品
