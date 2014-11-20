@@ -16,6 +16,9 @@ package com.slyak.trade.module.user;
 
 import com.slyak.framework.bean.User;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * .
  * <p/>
@@ -23,5 +26,7 @@ import com.slyak.framework.bean.User;
  * @author <a href="mailto:stormning@163.com">stormning</a>
  * @version V1.0, 2014/11/20
  */
+@Entity
+@Table(name = "t_user_detail")
 public class UserDetail extends User{
 }
