@@ -13,7 +13,7 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <!-- jpa open entity manager -->
+    <!-- JPA open entity manager -->
     <filter>
         <filter-name>openEntityManagerInViewFilter</filter-name>
         <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
@@ -21,6 +21,24 @@
     <filter-mapping>
         <filter-name>openEntityManagerInViewFilter</filter-name>
         <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--Shiro filter-->
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
     </filter-mapping>
 
     <!-- CharacterEncodingFilter -->
@@ -40,7 +58,7 @@
     <!--SiteMeshFilter-->
     <filter>
         <filter-name>siteMeshFilter</filter-name>
-        <filter-class>com.slyak.core.sitemesh.SlyakSiteMeshFilter</filter-class>
+        <filter-class>com.slyak.framework.core.sitemesh.SiteMeshFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>characterEncodingFilter</filter-name>

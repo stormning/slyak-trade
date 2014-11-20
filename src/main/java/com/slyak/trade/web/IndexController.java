@@ -14,6 +14,8 @@
 
 package com.slyak.trade.web;
 
+import com.slyak.trade.module.article.repo.ArticleRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
+    @Autowired
+    private ArticleRepo articleRepo;
+
     /**
      * 首页
      *
@@ -37,6 +42,7 @@ public class IndexController {
      */
     @RequestMapping("/")
     public String index(Model model) {
+        articleRepo.findAll();
 
         //动态
         //简介

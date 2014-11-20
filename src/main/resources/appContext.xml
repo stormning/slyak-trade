@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:component-scan base-package="com.slyak">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <!--configs-->
     <util:properties id="configs" location="classpath*:config.properties" ignore-resource-not-found="true" local-override="true"/>
@@ -21,9 +26,9 @@
     </bean>
 
     <!--jpa-->
-    <jpa:repositories base-package="com.slyak.trade.model" entity-manager-factory-ref="entityManagerFactory"/>
+    <jpa:repositories base-package="com.slyak" entity-manager-factory-ref="entityManagerFactory"/>
     <jpa:auditing auditor-aware-ref="auditorAware"/>
-    <bean id="auditorAware" class="com.slyak.common.ShiroAuditorAware"/>
+    <bean id="auditorAware" class="com.slyak.framework.bean.ShiroAuditorAware"/>
 
     <!--entityManagerFactory-->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -42,5 +47,70 @@
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
             </props>
         </property>
+    </bean>
+
+    <!--transaction-->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+        </property>
+    </bean>
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
+
+    <!--fileupload-->
+    <bean id="fileUpload" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="102400"/>
+    </bean>
+
+    <!--shiro-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!-- override these for application-specific URLs if you like:
+        <property name="loginUrl" value="/login.jsp"/>
+        <property name="successUrl" value="/home.jsp"/>
+        <property name="unauthorizedUrl" value="/unauthorized.jsp"/> -->
+        <!-- The 'filters' property is not necessary since any declared javax.servlet.Filter bean  -->
+        <!-- defined will be automatically acquired and available via its beanName in chain        -->
+        <!-- definitions, but you can perform instance overrides or name aliases here if you like: -->
+        <!-- <property name="filters">
+            <util:map>
+                <entry key="anAlias" value-ref="someFilter"/>
+            </util:map>
+        </property> -->
+        <property name="filterChainDefinitions">
+            <value>
+                # some example chain definitions:
+                /admin/** = authc, roles[admin]
+                /docs/** = authc, perms[document:read]
+                /** = anon
+                # more URL-to-FilterChain definitions here
+            </value>
+        </property>
+    </bean>
+
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- Single realm app.  If you have multiple realms, use the 'realms' property instead. -->
+        <property name="realm" ref="jdbcRealm"/>
+        <!-- By default the servlet container sessions will be used.  Uncomment this line
+             to use shiro's native sessions (see the JavaDoc for more): -->
+        <!-- <property name="sessionMode" value="native"/> -->
+    </bean>
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!-- Define the Shiro Realm implementation you want to use to connect to your back-end -->
+    <!-- security datasource: -->
+    <bean id="jdbcRealm" class="org.apache.shiro.realm.jdbc.JdbcRealm">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="authenticationQuery" value="${jdbcRealm.authenticationQuery}"/>
+        <property name="permissionsLookupEnabled" value="${jdbcRealm.permissionsLookupEnabled}"/>
+        <property name="userRolesQuery" value="${jdbcRealm.userRolesQuery}"/>
+        <property name="permissionsQuery" value="${jdbcRealm.permissionsQuery}"/>
+    </bean>
+
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
     </bean>
 </beans>

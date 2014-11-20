@@ -1,9 +1,9 @@
 /*
  * Project:  slyak-trade
  * Module:   slyak-trade
- * File:     Gender.java
+ * File:     ShiroAuditorAware.java
  * Modifier: stormning
- * Modified: 2014-11-20 10:55
+ * Modified: 2014-11-20 11:40
  * Copyright (c) 2014 Slyak All Rights Reserved.
  * Copying of this document or code and giving it to others and the
  * use or communication of the contents thereof, are forbidden without
@@ -12,7 +12,10 @@
  * or the registration of a utility model, design or code.
  */
 
-package com.slyak.common;
+package com.slyak.framework.bean;
+
+import org.apache.shiro.SecurityUtils;
+import org.springframework.data.domain.AuditorAware;
 
 /**
  * .
@@ -21,6 +24,9 @@ package com.slyak.common;
  * @author <a href="mailto:stormning@163.com">stormning</a>
  * @version V1.0, 2014/11/20
  */
-public enum Gender {
-    MALE,FEMALE,UNKONOWN
+public class ShiroAuditorAware implements AuditorAware<Long> {
+    @Override
+    public Long getCurrentAuditor() {
+        return (Long) SecurityUtils.getSubject().getPrincipal();
+    }
 }

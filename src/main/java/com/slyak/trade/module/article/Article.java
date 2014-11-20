@@ -12,9 +12,9 @@
  * or the registration of a utility model, design or code.
  */
 
-package com.slyak.trade.model;
+package com.slyak.trade.module.article;
 
-import com.slyak.common.Content;
+import com.slyak.framework.bean.Content;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

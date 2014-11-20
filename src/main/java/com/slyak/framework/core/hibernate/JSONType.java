@@ -12,7 +12,7 @@
  * or the registration of a utility model, design or code.
  */
 
-package com.slyak.core.hibernate;
+package com.slyak.framework.core.hibernate;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -43,7 +43,7 @@ import java.util.Properties;
 public class JSONType implements UserType, DynamicParameterizedType, Serializable {
     private static final long serialVersionUID = 352044032843534075L;
     private static final CoreMessageLogger LOG = Logger.getMessageLogger(CoreMessageLogger.class, JSONType.class.getName());
-    public static final String TYPE = "com.wisorg.scc.api.internal.core.support.hibernate.JSONType";
+    public static final String TYPE = "com.slyak.framework.core.hibernate.JSONType";
     public static final String CLASS_NAME = "class";
     private int sqlType = Types.VARCHAR;
     private Class clazz = Object.class;

@@ -12,7 +12,7 @@
  * or the registration of a utility model, design or code.
  */
 
-package com.slyak.common;
+package com.slyak.framework.bean;
 
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.CreatedBy;

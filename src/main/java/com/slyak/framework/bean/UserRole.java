@@ -1,9 +1,9 @@
 /*
  * Project:  slyak-trade
  * Module:   slyak-trade
- * File:     SlyakSiteMeshFilter.java
+ * File:     Role.java
  * Modifier: stormning
- * Modified: 2014-11-18 17:42
+ * Modified: 2014-11-20 15:23
  * Copyright (c) 2014 Slyak All Rights Reserved.
  * Copying of this document or code and giving it to others and the
  * use or communication of the contents thereof, are forbidden without
@@ -12,23 +12,19 @@
  * or the registration of a utility model, design or code.
  */
 
-package com.slyak.core.sitemesh;
+package com.slyak.framework.bean;
 
-import org.sitemesh.builder.SiteMeshFilterBuilder;
-import org.sitemesh.config.ConfigurableSiteMeshFilter;
-import org.sitemesh.content.tagrules.html.Sm2TagRuleBundle;
+import javax.persistence.*;
 
 /**
  * .
  * <p/>
  *
  * @author <a href="mailto:stormning@163.com">stormning</a>
- * @version V1.0, 2014/11/18
+ * @version V1.0, 2014/11/20
  */
-public class SlyakSiteMeshFilter extends ConfigurableSiteMeshFilter {
-
-    @Override
-    protected void applyCustomConfiguration(SiteMeshFilterBuilder builder) {
-        builder.addTagRuleBundle(new Sm2TagRuleBundle());
-    }
+@Entity
+@Table(name = "t_user_role")
+@IdClass(UserRolePK.class)
+public class UserRole extends UserRolePK{
 }

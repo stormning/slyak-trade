@@ -12,7 +12,7 @@
  * or the registration of a utility model, design or code.
  */
 
-package com.slyak.common;
+package com.slyak.framework.bean;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +28,7 @@ import org.springframework.data.repository.NoRepositoryBean;
  * @version V1.0, 2014/11/20
  */
 @NoRepositoryBean
-public interface ContentRepository<T extends Content> extends JpaRepository<T, Long> {
-    @Query("select c from #{#entityName} c where c.title like ?1 or c.body like ?1")
-    Page<T> search(String keyword, Pageable pageable);
+public interface ContentRepo<T extends Content> extends JpaRepository<T, Long> {
+    @Query("select c from #{#entityName} c where status=?2 and (c.title like ?1 or c.body like ?1)")
+    Page<T> findByKeyword(String keyword, Status status, Pageable pageable);
 }

@@ -12,9 +12,9 @@
  * or the registration of a utility model, design or code.
  */
 
-package com.slyak.common;
+package com.slyak.framework.bean;
 
-import com.slyak.core.hibernate.JSONType;
+import com.slyak.framework.core.hibernate.JSONType;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Basic;
