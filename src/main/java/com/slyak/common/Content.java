@@ -12,12 +12,15 @@
  * or the registration of a utility model, design or code.
  */
 
-package com.slyak.trade.repo;
+package com.slyak.common;
 
 import com.slyak.core.hibernate.JSONType;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Lob;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.List;
 
@@ -29,11 +32,7 @@ import java.util.List;
  * @version V1.0, 2014/11/19
  */
 @MappedSuperclass
-public abstract class Content implements Serializable {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Content extends AuditableBase implements Serializable {
 
     @Column(nullable = false)
     private String title;
@@ -44,58 +43,11 @@ public abstract class Content implements Serializable {
     private String body;
 
     @Column
-    private long creator;
-
-    @Column(name = "create_at")
-    private long createAt;
-
-    @Column
     @Type(type = JSONType.TYPE)
     private List<Long> fileIds;
 
     @Column
     private Status status = Status.ENABLED;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public long getCreator() {
-        return creator;
-    }
-
-    public void setCreator(long creator) {
-        this.creator = creator;
-    }
-
-    public long getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(long createAt) {
-        this.createAt = createAt;
-    }
 
     public List<Long> getFileIds() {
         return fileIds;
