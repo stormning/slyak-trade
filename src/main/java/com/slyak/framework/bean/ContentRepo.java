@@ -34,5 +34,5 @@ public interface ContentRepo<T extends Content> extends JpaRepository<T, Long> {
     Page<T> findAll(String keyword, Status status, Pageable pageable);
 
     @Query("select c from #{#entityName} c where status=?2")
-    Page<T> findAll(Status status, Sort sort);
+    Page<T> findAll(Status status, Pageable pageable);
 }
