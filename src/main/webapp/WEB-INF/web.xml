@@ -54,23 +54,23 @@
             <param-value>true</param-value>
         </init-param>
     </filter>
-
-    <!--SiteMeshFilter-->
-    <filter>
-        <filter-name>siteMeshFilter</filter-name>
-        <filter-class>com.slyak.framework.core.sitemesh.SiteMeshFilter</filter-class>
-    </filter>
     <filter-mapping>
         <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <!--SiteMeshFilter-->
+    <!--<filter>
+        <filter-name>siteMeshFilter</filter-name>
+        <filter-class>com.slyak.framework.core.sitemesh.SiteMeshFilter</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>siteMeshFilter</filter-name>
         <url-pattern>/*</url-pattern>
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>FORWARD</dispatcher>
         <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
+    </filter-mapping>-->
 
     <!-- Processes application requests -->
     <servlet>
