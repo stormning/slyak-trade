@@ -14,10 +14,13 @@
 
 package com.slyak.trade.web;
 
-import com.slyak.trade.module.article.repo.ArticleRepo;
+import com.google.common.collect.Sets;
+import com.slyak.trade.module.article.ArticleType;
+import com.slyak.trade.module.article.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -32,28 +35,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
     @Autowired
-    private ArticleRepo articleRepo;
+    private ArticleService articleService;
 
     /**
      * 首页
      *
-     * @param model
+     * @param modelMap
      * @return
      */
     @RequestMapping("/")
-    public String index(Model model) {
+    public String index(ModelMap modelMap) {
         //动态
         //简介
         //产品
         //案例
+        modelMap.put("news", articleService.listArticles(Sets.newHashSet(ArticleType.NEWS), 20));
+        modelMap.put("products", articleService.listArticles(Sets.newHashSet(ArticleType.PRODUCT), 20));
         return "index";
     }
 
     /**
      * 关于:简介 理念 资质 动态
      */
-    @RequestMapping("/about")
-    public String about() {
+    @RequestMapping("/about/{type}")
+    public String about(@PathVariable("type") ArticleType type, ModelMap modelMap) {
+        type = type == null ? ArticleType.ABOUT : type;
+        articleService.listArticles(Sets.newHashSet(type), 20);
         return "about";
     }
 

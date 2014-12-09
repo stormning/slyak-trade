@@ -16,6 +16,12 @@ package com.slyak.trade.module.article.repo;
 
 import com.slyak.framework.bean.ContentRepo;
 import com.slyak.trade.module.article.Article;
+import com.slyak.trade.module.article.ArticleType;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.Set;
 
 /**
  * .
@@ -25,4 +31,7 @@ import com.slyak.trade.module.article.Article;
  * @version V1.0, 2014/11/20
  */
 public interface ArticleRepo extends ContentRepo<Article> {
+
+    @Query("from Article where type in ?1 and status=0 order by id desc")
+    Slice<Article> findByTypeIn(Set<ArticleType> articleTypes, Pageable pageable);
 }

@@ -1,9 +1,9 @@
 /*
  * Project:  slyak-trade
  * Module:   slyak-trade
- * File:     Article.java
+ * File:     ArticleService.java
  * Modifier: stormning
- * Modified: 2014-11-20 09:38
+ * Modified: 2014-12-09 16:05
  * Copyright (c) 2014 Slyak All Rights Reserved.
  * Copying of this document or code and giving it to others and the
  * use or communication of the contents thereof, are forbidden without
@@ -12,33 +12,23 @@
  * or the registration of a utility model, design or code.
  */
 
-package com.slyak.trade.module.article;
+package com.slyak.trade.module.article.service;
 
-import com.slyak.framework.bean.Content;
+import com.slyak.trade.module.article.Article;
+import com.slyak.trade.module.article.ArticleType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import java.util.List;
+import java.util.Set;
 
 /**
  * .
  * <p/>
  *
  * @author <a href="mailto:stormning@163.com">stormning</a>
- * @version V1.0, 2014/11/20
+ * @version V1.0, 2014/12/9
  */
-@Entity
-@Table(name = "t_article")
-public class Article extends Content {
+public interface ArticleService {
 
-    @Column(name = "type")
-    private ArticleType type;
+    List<Article> listArticles(Set<ArticleType> articleTypes, int limit);
 
-    public ArticleType getType() {
-        return type;
-    }
-
-    public void setType(ArticleType type) {
-        this.type = type;
-    }
 }
