@@ -16,6 +16,7 @@ package com.slyak.framework.core.hibernate;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.base.Objects;
 import org.apache.commons.lang3.ObjectUtils;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
@@ -61,7 +62,7 @@ public class JSONType implements UserType, DynamicParameterizedType, Serializabl
 
     @Override
     public boolean equals(Object x, Object y) throws HibernateException {
-        return ObjectUtils.equals(x, y);
+        return Objects.equal(x, y);
     }
 
     @Override
