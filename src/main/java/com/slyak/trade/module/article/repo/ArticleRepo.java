@@ -14,7 +14,7 @@
 
 package com.slyak.trade.module.article.repo;
 
-import com.slyak.framework.bean.ContentRepo;
+import com.slyak.bean.ContentRepo;
 import com.slyak.trade.module.article.Article;
 import com.slyak.trade.module.article.ArticleType;
 import org.springframework.data.domain.Pageable;

@@ -14,7 +14,8 @@
 
 package com.slyak.trade.module.article;
 
-import com.slyak.framework.bean.Content;
+
+import com.slyak.bean.Content;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

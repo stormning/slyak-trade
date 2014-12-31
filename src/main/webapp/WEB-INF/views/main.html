@@ -13,14 +13,28 @@
   ~ or the registration of a utility model, design or code.
   -->
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head th:fragment="head (title)">
-  <title th:inline="text">[[${title}]]</title>
-  <link rel="stylesheet" th:href="@{/static/css/cssreset.css}"/>
-  <link rel="stylesheet" th:href="@{/static/css/cssgrids.css}"/>
-  <link rel="stylesheet" th:href="@{/static/css/main.css}"/>
+    <title th:inline="text">[[${title}]]</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/cssreset.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/cssgrids.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/main.css}"/>
 </head>
+<div th:fragment="header">
+    <div class="banner">
+        <a class="logo" th:href="@{/}">logo</a>
+    </div>
+    <div class="nav">
+
+    </div>
+    <div class="slider">
+
+    </div>
+</div>
+<div layout:fragment="">
+
+</div>
 <div th:fragment="footer">
-  hello world!
+    <script type="text/javascript" th:src="@{/static/js/jquery-1.11.1.js}"></script>
 </div>
 </html>
