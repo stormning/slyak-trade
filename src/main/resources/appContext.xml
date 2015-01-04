@@ -28,7 +28,7 @@
     <!--jpa-->
     <jpa:repositories base-package="com.slyak" entity-manager-factory-ref="entityManagerFactory"/>
     <jpa:auditing auditor-aware-ref="auditorAware"/>
-    <bean id="auditorAware" class="com.slyak.framework.bean.ShiroAuditorAware"/>
+    <bean id="auditorAware" class="com.slyak.bean.ShiroAuditorAware"/>
 
     <!--entityManagerFactory-->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
