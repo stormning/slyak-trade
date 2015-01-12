@@ -14,7 +14,8 @@
 
 package com.slyak.trade.module.user;
 
-import com.slyak.framework.bean.User;
+
+import com.slyak.bean.User;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -28,5 +29,5 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "t_user_detail")
-public class UserDetail extends User{
+public class UserDetail extends User {
 }
