@@ -14,9 +14,7 @@
   -->
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments::head('首页')">
-    <link rel="stylesheet" type="text/css" href="src/main/webapp/static/css/main.css"/>
-</head>
+<head th:replace="fragments::head('首页')"/>
 <body>
 <div class="container">
     <table class="pure-table pure-table-horizontal">
@@ -25,14 +23,13 @@
             <th>状态</th>
             <th>最新</th>
         </tr>
-        <tr data-th-each="">
+        <tr>
             <td>123</td>
             <td>123</td>
             <td>123</td>
         </tr>
     </table>
 </div>
-<div th:include="fragments::footer">
-</div>
+<div th:include="fragments::footer"/>
 </body>
 </html>
