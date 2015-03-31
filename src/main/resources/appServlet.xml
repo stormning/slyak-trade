@@ -11,6 +11,10 @@
     <mvc:resources mapping="/static/**" location="/static/" cache-period="31556926"/>
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico" cache-period="31556926"/>
 
+    <mvc:interceptors>
+        <bean class="org.resthub.web.springmvc.view.freemarker.RouterModelAttribute"/>
+    </mvc:interceptors>
+
     <mvc:annotation-driven>
         <mvc:message-converters>
             <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter"/>
@@ -21,5 +25,35 @@
     <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
         <property name="suffix" value=".ftl"/>
         <property name="contentType" value="text/html;charset=UTF-8"/>
+    </bean>
+
+    <!--
+        Choose HandlerMapping.
+        RouterHandlerMapping loads routes configuration from a file.
+        Router adapted from Play! Framework.
+
+        @see http://www.playframework.org/documentation/1.2.4/routes#syntax
+        for route configuration syntax.
+        Example:
+        GET    /home          PageController.showPage(id:'home')
+        GET    /page/{id}     PageController.showPage
+    -->
+    <bean id="handlerMapping" class="org.resthub.web.springmvc.router.RouterHandlerMapping">
+        <property name="routeFiles">
+            <list>
+                <value>routes.conf</value>
+                <!--
+                    Router will *append* routes declared in additional files
+                    <value>addroutes.conf</value>
+                -->
+            </list>
+        </property>
+        <!--
+            Uncomment the following configuration line
+            if you want routes to be dynamically reloaded when
+            route files are modified.
+            Can be a good idea in dev mode, not so much in production!
+        -->
+        <!-- <property name="autoReloadEnabled" value="true" /> -->
     </bean>
 </beans>
