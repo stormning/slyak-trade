@@ -41,19 +41,9 @@
     <bean id="handlerMapping" class="org.resthub.web.springmvc.router.RouterHandlerMapping">
         <property name="routeFiles">
             <list>
-                <value>routes.conf</value>
-                <!--
-                    Router will *append* routes declared in additional files
-                    <value>addroutes.conf</value>
-                -->
+                <value>classpath:routes.conf</value>
             </list>
         </property>
-        <!--
-            Uncomment the following configuration line
-            if you want routes to be dynamically reloaded when
-            route files are modified.
-            Can be a good idea in dev mode, not so much in production!
-        -->
-        <!-- <property name="autoReloadEnabled" value="true" /> -->
+        <property name="autoReloadEnabled" value="true"/>
     </bean>
 </beans>
