@@ -28,6 +28,8 @@
     </bean>
 
     <!--
+        @see http://resthub.org/springmvc-router/
+
         Choose HandlerMapping.
         RouterHandlerMapping loads routes configuration from a file.
         Router adapted from Play! Framework.

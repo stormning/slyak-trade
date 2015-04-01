@@ -1,1 +1,1 @@
-asdasda
+${route.reverse("sampleCtl.index")}
