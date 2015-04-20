@@ -14,8 +14,8 @@
 
 package com.slyak.controller;
 
+import com.slyak.core.spring.mvc.router.Router;
 import org.apache.commons.lang.time.DateUtils;
-import org.resthub.web.springmvc.router.Router;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
