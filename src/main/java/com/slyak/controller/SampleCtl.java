@@ -14,8 +14,13 @@
 
 package com.slyak.controller;
 
+import org.apache.commons.lang.time.DateUtils;
+import org.resthub.web.springmvc.router.Router;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * .
@@ -27,8 +32,12 @@ import org.springframework.ui.Model;
 @Controller
 public class SampleCtl {
 
-    public void index(Model model){
-        model.addAttribute("a","hi");
+    public void index(Model model) {
+        model.addAttribute("a",  Router.reverse("sample.index"));
     }
 
+    public static void main(String[] args) {
+        System.out.println(DateUtils.getFragmentInDays(new Date(), Calendar.YEAR));
+//        DateUtils.to
+    }
 }

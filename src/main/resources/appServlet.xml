@@ -12,7 +12,7 @@
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico" cache-period="31556926"/>
 
     <mvc:interceptors>
-        <bean class="org.resthub.web.springmvc.view.freemarker.RouterModelAttribute"/>
+        <bean class="com.slyak.core.spring.mvc.view.freemarker.RouterModelAttribute"/>
     </mvc:interceptors>
 
     <mvc:annotation-driven>
@@ -40,7 +40,7 @@
         GET    /home          PageController.showPage(id:'home')
         GET    /page/{id}     PageController.showPage
     -->
-    <bean id="handlerMapping" class="org.resthub.web.springmvc.router.RouterHandlerMapping">
+    <bean id="handlerMapping" class="com.slyak.core.spring.mvc.router.RouterHandlerMapping">
         <property name="routeFiles">
             <list>
                 <value>classpath:routes.conf</value>

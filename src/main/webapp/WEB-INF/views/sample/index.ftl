@@ -1,1 +1,1 @@
-${route.reverse("sampleCtl.index")}
+${a}
