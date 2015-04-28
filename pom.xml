@@ -67,10 +67,6 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
-        <dependency>
-            <groupId>net.sourceforge.jregex</groupId>
-            <artifactId>jregex</artifactId>
-        </dependency>
 
         <!--servlet-->
         <dependency>
