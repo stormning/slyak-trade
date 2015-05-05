@@ -11,10 +11,6 @@
     <mvc:resources mapping="/static/**" location="/static/" cache-period="31556926"/>
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico" cache-period="31556926"/>
 
-    <mvc:interceptors>
-        <bean class="com.slyak.core.spring.mvc.view.freemarker.RouterModelAttribute"/>
-    </mvc:interceptors>
-
     <mvc:annotation-driven>
         <mvc:message-converters>
             <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter"/>
@@ -27,25 +23,5 @@
         <property name="contentType" value="text/html;charset=UTF-8"/>
     </bean>
 
-    <!--
-        @see http://resthub.org/springmvc-router/
-
-        Choose HandlerMapping.
-        RouterHandlerMapping loads routes configuration from a file.
-        Router adapted from Play! Framework.
-
-        @see http://www.playframework.org/documentation/1.2.4/routes#syntax
-        for route configuration syntax.
-        Example:
-        GET    /home          PageController.showPage(id:'home')
-        GET    /page/{id}     PageController.showPage
-    -->
-    <bean id="handlerMapping" class="com.slyak.core.spring.mvc.router.RouterHandlerMapping">
-        <property name="routeFiles">
-            <list>
-                <value>classpath:routes.conf</value>
-            </list>
-        </property>
-        <property name="autoReloadEnabled" value="true"/>
-    </bean>
+    <bean id="handlerMapping" class="com.slyak.core.spring.web.RequestMappingHandlerMapping"/>
 </beans>

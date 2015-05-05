@@ -14,7 +14,6 @@
 
 package com.slyak.controller;
 
-import com.slyak.core.spring.mvc.router.Router;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +32,7 @@ import java.util.Date;
 public class SampleCtl {
 
     public void index(Model model) {
-        model.addAttribute("a",  Router.reverse("sample.index"));
+        model.addAttribute("a","hihi");
     }
 
     public static void main(String[] args) {
