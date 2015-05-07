@@ -23,5 +23,18 @@
         <property name="contentType" value="text/html;charset=UTF-8"/>
     </bean>
 
+    <bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="configuration">
+            <bean class="freemarker.template.Configuration">
+                <property name="objectWrapper">
+                    <bean class="com.slyak.core.freemarker.ConfigurableObjectWrapper"/>
+                </property>
+                <!--<property name=""-->
+                <!--<property name="sharedVaribles"/>-->
+            </bean>
+        </property>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
     <bean id="handlerMapping" class="com.slyak.core.spring.web.RequestMappingHandlerMapping"/>
 </beans>

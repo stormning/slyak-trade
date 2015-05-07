@@ -1,1 +1,1 @@
-${a}
+${ctls.SampleCtl.index()}
