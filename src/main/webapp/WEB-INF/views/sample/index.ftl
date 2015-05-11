@@ -1,1 +1,1 @@
-hello
+${ctls.SampleCtl.index()}hello
