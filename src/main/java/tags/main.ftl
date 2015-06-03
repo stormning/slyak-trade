@@ -10,7 +10,7 @@
     <#list libs as lib>
         <#switch lib>
             <#case "jquery">
-                <script src="#{'jquery/jquery.js'}"></script>
+                <script src="/static/js/jquery.js"></script>
         </#switch>
     </#list>
 </head>

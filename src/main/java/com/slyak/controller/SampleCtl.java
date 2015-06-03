@@ -32,7 +32,7 @@ import java.util.Date;
 @Controller
 public class SampleCtl {
 
-    public void index(Model model) {
+    public void index(Model model,String userId) {
         UserDetail user = new UserDetail();
         user.setName("jack");
         model.addAttribute("a","hihi");

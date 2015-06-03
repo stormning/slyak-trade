@@ -1,5 +1,5 @@
 <#-- @ftlvariable name="user" type="com.slyak.api.user.UserDetail" -->
 
 <@main.html title="test">
-hello
+hello ${sampleCtl.index(null,'jack')}
 </@main.html>
