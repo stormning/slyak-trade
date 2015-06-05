@@ -1,4 +1,4 @@
-<#macro html title libs=[]>
+<#macro html title js="">
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,12 +7,19 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>${title}</title>
-    <#list libs as lib>
-        <#switch lib>
-            <#case "jquery">
-                <script src="/static/js/jquery.js"></script>
-        </#switch>
-    </#list>
+    <#if js?has_content>
+        <script src="/static/js/require.js"></script>
+        <script>
+            requirejs.config({
+                baseUrl: '/static/js/lib',
+                paths: {
+                    "module": "../module",
+                    "jquery": "jquery-1.11.1"
+                }
+            });
+        </script>
+        <script src="/static/js/module/${js}.js"></script>
+    </#if>
 </head>
 <body>
     <#nested />
