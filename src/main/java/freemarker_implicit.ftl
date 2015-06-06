@@ -10,4 +10,5 @@
 
 [#-- @ftlroot "tags" --]
 [#import '/main.ftl' as main]
+[#import '/ui.ftl' as ui]
 [#import '/spring.ftl' as spring]
