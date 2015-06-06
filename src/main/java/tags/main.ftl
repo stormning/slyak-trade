@@ -7,12 +7,21 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>${title}</title>
+    <link rel="stylesheet" href="/static/lib/css/pure.css">
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="/static/css/lib/grids-responsive-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="/static/css/lib/grids-responsive.css">
+    <!--<![endif]-->
     <#if js?has_content>
         <script src="/static/js/require.js"></script>
         <script>
             requirejs.config({
                 baseUrl: '/static/js/lib',
                 paths: {
+                    "css": "../../css",
+                    "html": "../../html",
                     "module": "../module",
                     "jquery": "jquery-1.11.1"
                 }

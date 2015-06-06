@@ -1,5 +1,5 @@
-require(['jquery'], function ($) {
+require(['jquery','text!css/pure'], function ($) {
    $(function(){
-      alert(111);
+      console.log($("body"));
    });
 });
