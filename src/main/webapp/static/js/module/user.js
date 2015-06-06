@@ -1,4 +1,4 @@
-require(['jquery','text!css/pure'], function ($) {
+require(['jquery','plugin/text!css/pure'], function ($) {
    $(function(){
       console.log($("body"));
    });

@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>${title}</title>
-    <link rel="stylesheet" href="/static/lib/css/pure.css">
+    <link rel="stylesheet" href="/static/css/lib/pure.css">
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="/static/css/lib/grids-responsive-old-ie.css">
     <![endif]-->
@@ -18,12 +18,10 @@
         <script src="/static/js/require.js"></script>
         <script>
             requirejs.config({
-                baseUrl: '/static/js/lib',
+                baseUrl: '/static/js',
                 paths: {
-                    "css": "../../css",
-                    "html": "../../html",
-                    "module": "../module",
-                    "jquery": "jquery-1.11.1"
+                    "css": "../css",
+                    "jquery": "lib/jquery-1.11.1"
                 }
             });
         </script>
