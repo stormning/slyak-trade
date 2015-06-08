@@ -1,6 +1,11 @@
 <#-- @ftlvariable name="user" type="com.slyak.api.user.UserDetail" -->
 <@main.html title="test" module="user">
-123
-    <@ui.fixed_right right=300>
-    </@ui.fixed_right>
+    <#assign lc>
+        我是左边的内容
+    </#assign>
+    <#assign rc>
+        我是右边的内容
+    </#assign>
+    <@ui.fixedRight rightWidth=300 leftContent=lc rightContent=rc>
+    </@ui.fixedRight>
 </@main.html>

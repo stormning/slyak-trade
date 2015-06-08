@@ -24,6 +24,7 @@
     <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
         <property name="cache" value="true"/>
         <property name="suffix" value=".ftl"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
     </bean>
 
     <bean id="handlerMapping" class="com.slyak.core.spring.web.RequestMappingHandlerMapping"/>
