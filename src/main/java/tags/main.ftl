@@ -1,4 +1,4 @@
-<#macro html title responsive=false module="">
+<#macro html title responsive=false js="" css="">
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +8,9 @@
     <meta name="description" content="">
     <title>${title}</title>
     <link rel="stylesheet" href="/static/css/lib/pure.css">
+    <#if css?has_content>
+        <link rel="stylesheet" href="/static/css/module/${css}.css">
+    </#if>
     <#if responsive>
         <!--[if lte IE 8]>
         <link rel="stylesheet" href="/static/css/lib/grids-responsive-old-ie.css">
@@ -19,7 +22,7 @@
 </head>
 <body>
     <#nested />
-    <#if module?has_content>
+    <#if js?has_content>
     <script src="/static/js/require.js"></script>
     <script>
         requirejs.config({
@@ -31,7 +34,7 @@
             }
         });
     </script>
-    <script src="/static/js/module/${module}.js"></script>
+    <script src="/static/js/module/${js}.js"></script>
     </#if>
 </body>
 </html>
