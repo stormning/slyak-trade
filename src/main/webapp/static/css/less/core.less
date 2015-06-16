@@ -6,6 +6,14 @@
   border-radius: @radius;
 }
 
+.m0auto {
+  margin: 0 auto;
+}
+
 .mt(@gap) {
   margin-top: @gap;
+}
+
+.container:extend(.m0auto) {
+  width: 1000px;
 }
