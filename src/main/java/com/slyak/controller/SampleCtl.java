@@ -14,7 +14,7 @@
 
 package com.slyak.controller;
 
-import com.slyak.api.user.UserDetail;
+import com.slyak.api.user.User;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +33,7 @@ import java.util.Date;
 public class SampleCtl {
 
     public void index(Model model,String userId) {
-        UserDetail user = new UserDetail();
+        User user = new User();
         user.setName("jack");
         model.addAttribute("a","hihi");
         model.addAttribute("user",user);

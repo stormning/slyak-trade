@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="user" type="com.slyak.api.user.UserDetail" -->
+<#-- @ftlvariable name="user" type="com.slyak.api.user.User" -->
 <@main.html title="test" js="user">
     <#assign lc>
         我是左边的内容
