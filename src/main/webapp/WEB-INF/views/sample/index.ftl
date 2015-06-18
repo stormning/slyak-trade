@@ -6,6 +6,5 @@
     <#assign rc>
         我是右边的内容
     </#assign>
-    <@ui.fixedRight rightWidth=300 leftContent=lc rightContent=rc>
-    </@ui.fixedRight>
+    <@ui.fixedRight rightWidth=300 leftContent=lc rightContent=rc/>
 </@main.html>

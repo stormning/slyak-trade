@@ -1,0 +1,19 @@
+.m0auto,
+.container {
+  margin: 0 auto;
+}
+.container {
+  width: 1000px;
+}
+.mt5 {
+  margin-top: 5px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mt15 {
+  margin-top: 15px;
+}
+.mt20 {
+  margin-top: 20px;
+}
