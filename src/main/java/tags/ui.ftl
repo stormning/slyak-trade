@@ -45,3 +45,9 @@
     </div>
 </div>
 </#macro>
+
+<#macro menus>
+    <#list context.getMenus() as menu>
+        ${menu.title} ${menu.url} ${menu.active} ${menu}
+    </#list>
+</#macro>
