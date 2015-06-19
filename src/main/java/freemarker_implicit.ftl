@@ -5,6 +5,7 @@
 [#-- @ftlvariable name="Request" type="freemarker.ext.servlet.HttpRequestHashModel" --]
 [#-- @ftlvariable name="RequestParameters" type="freemarker.ext.servlet.HttpRequestParametersHashModel" --]
 
+[#-- @ftlvariable name="math" type="java.lang.Math" --]
 [#-- @ftlvariable name="sec" type="org.apache.shiro.SecurityUtils" --]
 [#-- @ftlvariable name="sampleCtl" type="com.slyak.controller.SampleCtl" --]
 
