@@ -5,7 +5,8 @@
 </#function>
 
 <#macro wrapContent>
-    <#if test><div style="border: 1px solid ${randomColor()}"></#if>
+    <#if test>
+    <div style="border: 1px solid ${randomColor()}"></#if>
     <#nested />
     <#if test></div></#if>
 </#macro>
@@ -46,8 +47,23 @@
 </div>
 </#macro>
 
-<#macro menus>
-    <#list context.getMenus() as menu>
-        ${menu.title} ${menu.url} ${menu.active} ${menu}
+<#macro menusInner menus isChildren = false>
+    <#assign ulClass = isChildren?string("pure-menu-children","pure-menu-list")/>
+<ul class="${ulClass}">
+    <#list menus as menu>
+        <#assign hasChild = menu.subMenus?has_content/>
+        <li class="pure-menu-item<#if menu.active> pure-menu-selected</#if><#if hasChild> pure-menu-has-children pure-menu-allow-hover</#if>">
+            <a href="${menu.url}" class="pure-menu-link">${menu.title}</a>
+            <#if hasChild>
+                <@menusInner menu.subMenus/>
+            </#if>
+        </li>
     </#list>
+</ul>
+</#macro>
+
+<#macro menus root=context.getMenus()>
+<div class="pure-menu pure-menu-horizontal">
+    <@menusInner menus=context.getMenus() isChildren=false/>
+</div>
 </#macro>
