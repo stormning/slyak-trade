@@ -55,7 +55,7 @@
         <li class="pure-menu-item<#if menu.active> pure-menu-selected</#if><#if hasChild> pure-menu-has-children pure-menu-allow-hover</#if>">
             <a href="${menu.url}" class="pure-menu-link">${menu.title}</a>
             <#if hasChild>
-                <@menusInner menu.subMenus/>
+                <@menusInner menus=menu.subMenus isChildren=true/>
             </#if>
         </li>
     </#list>

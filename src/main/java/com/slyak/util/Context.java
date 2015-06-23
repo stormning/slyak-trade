@@ -35,7 +35,7 @@ public class Context {
     private List<Menu> menus = null;
 
     public List<Menu> getMenus() {
-        if (menus == null) {
+        if (menus == null || true) {
             Resource resource = resourceLoader.getResource(MENU_FILE);
             try {
                 menus = JSON.parseArray(FileUtils.readFileToString(resource.getFile(), "UTF-8"), Menu.class);
@@ -54,6 +54,12 @@ public class Context {
         return copy;
     }
 
+    /**
+     * TODO 是否适用所有场景?
+     * @param menus
+     * @param rc
+     * @return
+     */
     private boolean loopSetActive(List<Menu> menus, RequestCondition<RequestMappingInfo> rc) {
         for (Menu parent : menus) {
             if (AppContext.urlMath(parent.getUrl(), rc)) {
