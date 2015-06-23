@@ -50,17 +50,17 @@ public class Context {
 
         List<Menu> copy = Lists.newArrayList(menus);
         //set active menu
-        loopFindActive(copy, AppContext.getRequestCondition());
+        loopSetActive(copy, AppContext.getRequestCondition());
         return copy;
     }
 
-    private boolean loopFindActive(List<Menu> menus, RequestCondition<RequestMappingInfo> rc) {
+    private boolean loopSetActive(List<Menu> menus, RequestCondition<RequestMappingInfo> rc) {
         for (Menu parent : menus) {
             if (AppContext.urlMath(parent.getUrl(), rc)) {
                 parent.setActive(true);
                 return true;
             } else {
-                boolean subActive = loopFindActive(parent.getSubMenus(), rc);
+                boolean subActive = loopSetActive(parent.getSubMenus(), rc);
                 if (subActive) {
                     parent.setActive(true);
                 }
