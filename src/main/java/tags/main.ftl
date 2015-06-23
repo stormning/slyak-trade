@@ -21,7 +21,9 @@
     </#if>
 </head>
 <body>
-    <#nested />
+    <@ui.m0auto width=960>
+        <#nested />
+    </@ui.m0auto>
     <#if js?has_content>
     <script src="/static/js/require.js"></script>
     <script>

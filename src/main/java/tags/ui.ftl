@@ -47,6 +47,12 @@
 </div>
 </#macro>
 
+<#macro m0auto width>
+<div style="margin: 0 auto;width: ${width}px">
+    <@wrapContent><#nested/></@wrapContent>
+</div>
+</#macro>
+
 <#macro menusInner menus isChildren = false>
     <#assign ulClass = isChildren?string("pure-menu-children","pure-menu-list")/>
 <ul class="${ulClass}">
