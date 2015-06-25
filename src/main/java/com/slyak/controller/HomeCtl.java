@@ -1,6 +1,6 @@
 /*
- * Project:  slyak-web
- * Module:   slyak-web
+ * Project:  slyak-blog
+ * Module:   slyak-blog
  * File:     IndexController.java
  * Modifier: nzhou
  * Modified: 2015-03-30 17:21
@@ -15,12 +15,9 @@
 package com.slyak.controller;
 
 import com.slyak.api.user.User;
-import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
-import java.util.Calendar;
-import java.util.Date;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * .
@@ -30,17 +27,19 @@ import java.util.Date;
  * @version V1.0, 2015/3/30
  */
 @Controller
-public class SampleCtl {
+@RequestMapping
+public class HomeCtl {
 
-    public void index(Model model,String userId) {
+    @RequestMapping
+    public String index(Model model,String userId) {
         User user = new User();
         user.setName("jack");
         model.addAttribute("a","hihi");
         model.addAttribute("user",user);
+        return "index";
     }
 
-    public static void main(String[] args) {
-        System.out.println(DateUtils.getFragmentInDays(new Date(), Calendar.YEAR));
-//        DateUtils.to
+    public void about(){
+
     }
 }

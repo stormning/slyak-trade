@@ -1,5 +1,7 @@
 package com.slyak.util;
 
+import org.springframework.beans.BeanUtils;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import java.util.List;
  */
 public class Menu implements Serializable {
     private String title;
+    private String name;
     private String url;
     private boolean active;
     private List<Menu> subMenus;
@@ -46,6 +49,20 @@ public class Menu implements Serializable {
 
     public void setSubMenus(List<Menu> subMenus) {
         this.subMenus = subMenus;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Menu clone(){
+        Menu copy = new Menu();
+        BeanUtils.copyProperties(this,copy);
+        return copy;
     }
 
     @Override

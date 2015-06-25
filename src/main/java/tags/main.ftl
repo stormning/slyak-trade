@@ -1,4 +1,4 @@
-<#macro html title responsive=false js="" css="">
+<#macro html title responsive=false js="" css="web">
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,15 +15,13 @@
         <!--[if lte IE 8]>
         <link rel="stylesheet" href="/static/css/lib/grids-responsive-old-ie.css">
         <![endif]-->
-        <!--[if gt IE 8]><!-->
+        <!--[if gt IE 8]>
         <link rel="stylesheet" href="/static/css/lib/grids-responsive.css">
-        <!--<![endif]-->
+        <![endif]-->
     </#if>
 </head>
 <body>
-    <@ui.m0auto width=960>
-        <#nested />
-    </@ui.m0auto>
+    <#nested />
     <#if js?has_content>
     <script src="/static/js/require.js"></script>
     <script>
@@ -38,6 +36,9 @@
     </script>
     <script src="/static/js/module/${js}.js"></script>
     </#if>
+    <!--[if lte IE 8]>
+    <script src="/static/js/lib/respond.js"></script>
+    <![endif]-->
 </body>
 </html>
 </#macro>

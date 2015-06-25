@@ -1,0 +1,123 @@
+@import "core";
+
+#container {
+  padding-top: @defaultGap;
+}
+
+@logoWidth: 134px;
+
+.header:extend(.white-bg) {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+
+  &-wrapper {
+    .fixed-left(@logoWidth+ @defaultGap);
+    .logo {
+      height: 60px;
+      background: url("../../img/slyak.png") no-repeat 0 14px;
+      text-indent: -500px;
+    }
+  }
+
+  .pure-menu-link {
+    .white-bg;
+    color: @defaultLinkColor;
+  }
+
+  .pure-menu-allow-hover {
+    & > .pure-menu-link {
+      border-top: 2px solid #fff;
+      .vac(58px);
+      .mr();
+      &:hover, &:focus {
+        border-color: @defaultLinkActiveColor;
+      }
+    }
+    &.pure-menu-selected > .pure-menu-link {
+      border-color: @defaultLinkActiveColor;
+    }
+  }
+
+  .pure-menu-has-children > .pure-menu-link::after {
+    content: " ";
+  }
+
+  .pure-menu-selected > .pure-menu-link, .pure-menu-active > .pure-menu-link, .pure-menu-link:hover, .pure-menu-link:focus {
+    color: @defaultLinkActiveColor;
+  }
+}
+
+.pure-button {
+  background-color: #ff5b24;
+  color: #fff;
+  float: left;
+  font-size: 13px;
+  padding: 5px 12px;
+  text-decoration: none;
+  text-transform: uppercase;
+  .border-radius(0px);
+  &:hover{
+    background: #000;
+    color: #fff;
+  }
+}
+
+.column-wrapper {
+  .p(0px @defaultGap-1-2)
+}
+
+@postTypeWidth: @defaultGap-4-3;
+@postTypeBorder: 2px;
+@postLeftWidth: @postTypeWidth+@postTypeBorder*2+@defaultGap-1-2;
+
+@postSimpleImgWidth: 60px;
+@postSimpleLeftWidth: @postSimpleImgWidth+@defaultGap-1-2;
+.post {
+  &-title {
+    .fixed-left(@postLeftWidth);
+  }
+  &-type {
+    width: @postTypeWidth;
+    .vtac(@postTypeWidth);
+    border: @postTypeBorder solid @defaultLinkActiveColor;
+    color: @defaultLinkActiveColor;
+    .border-radius(50%);
+    font-size: 12px;
+  }
+  &-simple {
+    .pb(@defaultGap-1-2);
+    .bb(1px dotted #ddd);
+    .mb(@defaultGap-1-2);
+    .fixed-left(@postSimpleLeftWidth);
+    a&-title {
+      color: #222;
+      .db;
+    }
+  }
+}
+
+.tabs {
+  .bb(1px solid #ddd);
+
+  .tab {
+    .p(0px 5px);
+    .bt(3px solid #fff);
+    .br();
+    display: block;
+    .vtac(@defaultGap-5-3);
+    &-active, &:hover, &:focus {
+      border-top-color: @defaultLinkActiveColor;
+      color: #222;
+    }
+  }
+}
+
+.widget:extend(.default-border,.white-bg) {
+  .mb(@defaultGap);
+  border: @defaultBoarder;
+  &-header {
+    border-bottom: @defaultBoarder;
+  }
+  &-content, &-header {
+    .p(@defaultGap);
+  }
+}

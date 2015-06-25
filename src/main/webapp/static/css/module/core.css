@@ -1,19 +1,60 @@
+body {
+  font-size: 14px;
+  font-family: "微软雅黑", Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-self, serif;
+  color: #606060;
+  background: #ffffff url("../../img/bg.png") repeat;
+}
+ul,
+li {
+  padding: 0px;
+  margin: 0px;
+}
+p {
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+li {
+  list-style: none;
+}
+.default-link,
+a {
+  color: #999999;
+  text-decoration: none;
+  transition: all 0.2s linear 0s;
+}
+.default-link:hover,
+.default-link:focus,
+.default-link:active {
+  color: #ff5b24;
+}
+.tac {
+  text-align: center;
+}
+.default-border {
+  border: 1px solid #eeeeee;
+}
+.white-bg {
+  background-color: #fff;
+}
+.db {
+  display: block;
+}
 .m0auto,
 .container {
   margin: 0 auto;
 }
-.container {
-  width: 1000px;
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
 }
-.mt5 {
-  margin-top: 5px;
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
 }
-.mt10 {
-  margin-top: 10px;
-}
-.mt15 {
-  margin-top: 15px;
-}
-.mt20 {
-  margin-top: 20px;
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
 }

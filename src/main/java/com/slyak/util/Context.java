@@ -5,12 +5,12 @@ import com.google.common.collect.Lists;
 import com.slyak.core.FileUtils;
 import com.slyak.core.freemarker.Ftm;
 import com.slyak.core.spring.web.AppContext;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.servlet.mvc.condition.RequestCondition;
-import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
+import org.springframework.web.util.UrlPathHelper;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +30,8 @@ public class Context {
 
     private static ResourceLoader resourceLoader = new DefaultResourceLoader();
 
+    private static UrlPathHelper urlPathHelper = new UrlPathHelper();
+
     private List<Menu> menus = null;
 
     public List<Menu> getMenus() {
@@ -46,30 +48,41 @@ public class Context {
             return menus;
         }
 
-        List<Menu> copy = Lists.newArrayList(menus);
+        List<Menu> copy = Lists.newArrayList();
+        for (Menu menu : menus) {
+            copy.add(menu.clone());
+        }
+
+        boolean isPath = false;
+        String nameOrPath = (String) AppContext.getRequest().getAttribute(Constants.ATTR_MENU_NAME);
+        if (StringUtils.isBlank(nameOrPath)) {
+            isPath = true;
+            nameOrPath = urlPathHelper.getLookupPathForRequest(AppContext.getRequest());
+        }
         //set active menu
-        loopSetActive(copy, AppContext.getRequestCondition());
+        loopSetActive(copy, nameOrPath, isPath);
         return copy;
     }
 
     /**
-     * TODO 是否适用所有场景?
-     *
      * @param menus
-     * @param rc
+     * @param nameOrPath
      * @return
      */
-    private boolean loopSetActive(List<Menu> menus, RequestCondition<RequestMappingInfo> rc) {
-        for (Menu parent : menus) {
-            if (AppContext.urlMath(parent.getUrl(), rc)) {
-                parent.setActive(true);
-                return true;
-            } else {
-                boolean subActive = loopSetActive(parent.getSubMenus(), rc);
-                if (subActive) {
+    private boolean loopSetActive(List<Menu> menus, String nameOrPath, boolean isPath) {
+        if (!CollectionUtils.isEmpty(menus)) {
+            for (Menu parent : menus) {
+                String testNameOrPath = isPath ? parent.getUrl() : parent.getName();
+                if (StringUtils.equals(testNameOrPath, nameOrPath)) {
                     parent.setActive(true);
+                    return true;
+                } else {
+                    boolean subActive = loopSetActive(parent.getSubMenus(), nameOrPath, isPath);
+                    if (subActive) {
+                        parent.setActive(true);
+                        return true;
+                    }
                 }
-                return subActive;
             }
         }
         return false;

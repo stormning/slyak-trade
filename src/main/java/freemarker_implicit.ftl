@@ -8,9 +8,10 @@
 [#-- @ftlvariable name="context" type="com.slyak.util.Context" --]
 [#-- @ftlvariable name="math" type="java.lang.Math" --]
 [#-- @ftlvariable name="sec" type="org.apache.shiro.SecurityUtils" --]
-[#-- @ftlvariable name="sampleCtl" type="com.slyak.controller.SampleCtl" --]
+[#-- @ftlvariable name="sampleCtl" type="com.slyak.controller.HomeCtl" --]
 
 [#-- @ftlroot "tags" --]
+[#import '/layout.ftl' as layout]
 [#import '/main.ftl' as main]
 [#import '/ui.ftl' as ui]
 [#import '/spring.ftl' as spring]

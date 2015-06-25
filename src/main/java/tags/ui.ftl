@@ -11,9 +11,9 @@
     <#if test></div></#if>
 </#macro>
 
-<#macro fixedLeft left leftContent rightContent>
-<div class="pure-g" style="padding-left: ${left}px">
-    <div class="pure-u" style="width: ${left}px;margin-right: -${left}px">
+<#macro fixedLeft leftWidth leftContent rightContent>
+<div class="pure-g" style="padding-left: ${leftWidth}px">
+    <div class="pure-u" style="width: ${leftWidth}px;margin-left: -${leftWidth}px">
         <@wrapContent>${leftContent}</@wrapContent>
     </div>
     <div class="pure-u-1">
@@ -35,7 +35,7 @@
 
 <#macro fixedLeftRight leftWidth rightWidth leftContent middleContent rightContent>
 <div class="pure-g" style="padding-right: ${rightWidth}px">
-    <div class="pure-u" style="width: ${leftWidth}px;margin-right: -${leftWidth}px;">
+    <div class="pure-u" style="width: ${leftWidth}px;margin-left: -${leftWidth}px;">
         <@wrapContent>${leftContent}</@wrapContent>
     </div>
     <div class="pure-u-1">
@@ -58,7 +58,7 @@
 <ul class="${ulClass}">
     <#list menus as menu>
         <#assign hasChild = menu.subMenus?has_content/>
-        <li class="pure-menu-item<#if menu.active> pure-menu-selected</#if><#if hasChild> pure-menu-has-children pure-menu-allow-hover</#if>">
+        <li class="pure-menu-item<#if !isChildren> pure-menu-allow-hover</#if><#if menu.active> pure-menu-selected</#if><#if hasChild> pure-menu-has-children</#if>">
             <a href="${menu.url}" class="pure-menu-link">${menu.title}</a>
             <#if hasChild>
                 <@menusInner menus=menu.subMenus isChildren=true/>
@@ -68,8 +68,8 @@
 </ul>
 </#macro>
 
-<#macro menus root=context.getMenus()>
+<#macro menus root=context.getMenus() attrs...>
 <div class="pure-menu pure-menu-horizontal">
-    <@menusInner menus=context.getMenus() isChildren=false/>
+    <@menusInner menus=root isChildren=false/>
 </div>
 </#macro>

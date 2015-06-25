@@ -1,24 +1,12 @@
 [
   {
     "title": "首页",
-    "url": "/sample/index",
-    "subMenus": [
-      {
-        "title": "sub1",
-        "url": "/sample/sub1"
-      },
-      {
-        "title": "sub2",
-        "url": "/sample/sub2"
-      }
-    ]
+    "url": "/",
+    "name": "index"
   },
   {
-    "title": "Note",
-    "url": "/sample/note"
-  },
-  {
-    "title": "Games",
-    "url": "/sample/games"
+    "title": "About",
+    "url": "/about",
+    "name": "about"
   }
 ]
