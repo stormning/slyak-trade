@@ -52,7 +52,7 @@ public class FeedServiceImpl implements FeedService {
             BizKey value = bke.getValue();
             feeds.get(bke.getKey()).setRendered(feedTemplateRendersMap.get(value.getClass()).render(value));
         }
-        return null;
+        return feedPage;
     }
 
     @Override
