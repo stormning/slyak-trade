@@ -14,7 +14,9 @@
 
 package com.slyak.controller;
 
-import com.slyak.api.user.User;
+import com.slyak.api.common.FeedService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,16 +32,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class HomeCtl {
 
+    @Autowired
+    private FeedService feedService;
+
     @RequestMapping
-    public String index(Model model,String userId) {
-        User user = new User();
-        user.setName("jack");
-        model.addAttribute("a","hihi");
-        model.addAttribute("user",user);
+    public String index(Pageable pageable, Model model) {
+        model.addAttribute("page", feedService.listAll(pageable));
         return "index";
     }
 
-    public void about(){
+    public void about() {
+
+    }
+
+    public void hi() {
 
     }
 }

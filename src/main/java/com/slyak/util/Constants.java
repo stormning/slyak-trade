@@ -9,4 +9,12 @@ package com.slyak.util;
  */
 public class Constants {
     public static String ATTR_MENU_NAME = "_attr_menu_name";
+
+    public static enum Roles{
+        ADMIN
+    }
+
+    public static class Bizs{
+        public static final int FEED = 0;
+    }
 }

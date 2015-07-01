@@ -69,6 +69,7 @@ public class Menu implements Serializable {
     public String toString() {
         return "Menu{" +
                 "title='" + title + '\'' +
+                ", name='" + name + '\'' +
                 ", url='" + url + '\'' +
                 ", active=" + active +
                 ", subMenus=" + subMenus +

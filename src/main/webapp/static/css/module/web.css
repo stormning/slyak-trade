@@ -1,24 +1,31 @@
 body {
   font-size: 14px;
-  font-family: "微软雅黑", Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-self, serif;
+  font-weight: 100;
+  font-family: "Trebuchet MS", "微软雅黑", serif !important;
   color: #606060;
   background: #ffffff url("../../img/bg.png") repeat;
 }
 ul,
-li {
+li,
+input,
+button {
   padding: 0px;
   margin: 0px;
 }
+button {
+  border: 0px;
+  background-image: none;
+}
 p {
-  margin-top: 15px;
-  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 15px;
 }
 li {
   list-style: none;
 }
 .default-link,
 a {
-  color: #999999;
+  color: #666666;
   text-decoration: none;
   transition: all 0.2s linear 0s;
 }
@@ -67,21 +74,24 @@ a {
 .header {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
+.header .container {
+  padding: 0px 15px;
+}
 .header-wrapper {
-  padding-left: 164px;
+  padding-left: 179px;
 }
 .header-wrapper .left {
-  width: 164px;
-  margin-left: -164px;
+  width: 179px;
+  margin-left: -179px;
 }
 .header-wrapper .logo {
   height: 60px;
-  background: url("../../img/slyak.png") no-repeat 0 14px;
+  background: url("../../img/slyak.png") no-repeat 15px 14px;
   text-indent: -500px;
 }
 .header .pure-menu-link {
   background-color: #fff;
-  color: #999999;
+  color: #666666;
 }
 .header .pure-menu-allow-hover > .pure-menu-link {
   border-top: 2px solid #fff;
@@ -105,14 +115,14 @@ a {
 .header .pure-menu-link:focus {
   color: #ff5b24;
 }
-.pure-button {
+.pure-button,
+.search-form button {
+  height: 36px;
+  line-height: 36px;
   background-color: #ff5b24;
   color: #fff;
-  float: left;
   font-size: 13px;
-  padding: 5px 12px;
-  text-decoration: none;
-  text-transform: uppercase;
+  padding: 0px 12px;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
@@ -124,10 +134,10 @@ a {
 .column-wrapper {
   padding: 0px 15px;
 }
-.post-title {
+.post-info {
   padding-left: 59px;
 }
-.post-title .left {
+.post-info .left {
   width: 59px;
   margin-left: -59px;
 }
@@ -141,6 +151,15 @@ a {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
+  font-size: 12px;
+}
+.post-title {
+  font-size: 24px;
+  text-shadow: #999999 1px 1px 5px !important;
+}
+.post-meta {
+  margin-top: 10px;
+  color: #999;
   font-size: 12px;
 }
 .post-simple {
@@ -179,10 +198,47 @@ a.post-simple-title {
   margin-bottom: 30px;
   border: 1px solid #eeeeee;
 }
-.widget-header {
+.widget-header,
+.widget-header-2 {
   border-bottom: 1px solid #eeeeee;
+}
+.widget-header-2 {
+  padding: 10px 15px;
 }
 .widget-content,
 .widget-header {
   padding: 30px;
+  line-height: 28px;
+}
+.search-form {
+  padding-right: 48px;
+}
+.search-form .right {
+  width: 48px;
+  margin-right: -48px;
+}
+.search-form input,
+.search-form button {
+  padding: 0px;
+  margin: 0px;
+  height: 38px;
+  line-height: 38px;
+  box-sizing: border-box;
+}
+.search-form input {
+  width: 100%;
+}
+.search-form button {
+  text-align: center;
+  width: 48px;
+}
+.search-form input {
+  padding: 0px 15px;
+  border: 1px solid #e4e4e4;
+  background-color: #f7f7f7;
+}
+.search-form input:focus {
+  border: 1px solid #ff5b24;
+  box-shadow: none;
+  outline: 0 none;
 }

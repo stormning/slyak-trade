@@ -11,24 +11,30 @@
 
 @defaultBoarder: 1px solid #eee;
 @defaultColor: #606060;
-@defaultLinkColor: #999;
+@defaultLinkColor: #666;
 @defaultLinkActiveColor: #ff5b24;
 
 body {
   font-size: 14px;
-  font-family: "微软雅黑", Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-self, serif;
+  font-weight: 100;
+  font-family: "Trebuchet MS", "微软雅黑", serif !important;
   color: @defaultColor;
   background: #fff url("../../img/bg.png") repeat;
 }
 
-ul, li {
+ul, li, input, button {
   .p(0px);
   .m(0px);
 }
 
+button {
+  .b(0px);
+  background-image: none;
+}
+
 p {
-  .mt(@defaultGap-1-2);
-  .mb(0px)
+  .mt(0px);
+  .mb(@defaultGap-1-2)
 }
 
 li {
@@ -70,6 +76,10 @@ a:extend(.default-link) {
 
 .default-border {
   border: @defaultBoarder;
+}
+
+.b(@border:@defaultBoarder) {
+  border: @border;
 }
 
 .bb(@border:@defaultBoarder) {
@@ -180,5 +190,22 @@ a:extend(.default-link) {
   }
   @media (min-width: 1200px) {
     width: 1170px;
+  }
+}
+
+.btn-group-fixed-right(@right,@height) {
+  .fixed-right(@right);
+  input, button {
+    .p(0px);
+    .m(0px);
+    .vac(@height);
+    box-sizing: border-box;
+  }
+  input {
+    width: 100%;
+  }
+  button {
+    .tac;
+    width: @right;
   }
 }

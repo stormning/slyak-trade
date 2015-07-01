@@ -1,24 +1,31 @@
 body {
   font-size: 14px;
-  font-family: "微软雅黑", Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-self, serif;
+  font-weight: 100;
+  font-family: "Trebuchet MS", "微软雅黑", serif !important;
   color: #606060;
   background: #ffffff url("../../img/bg.png") repeat;
 }
 ul,
-li {
+li,
+input,
+button {
   padding: 0px;
   margin: 0px;
 }
+button {
+  border: 0px;
+  background-image: none;
+}
 p {
-  margin-top: 15px;
-  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 15px;
 }
 li {
   list-style: none;
 }
 .default-link,
 a {
-  color: #999999;
+  color: #666666;
   text-decoration: none;
   transition: all 0.2s linear 0s;
 }
