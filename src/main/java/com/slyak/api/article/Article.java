@@ -14,6 +14,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "t_article")
-public class Artice extends Content {
+public class Article extends Content {
 
 }

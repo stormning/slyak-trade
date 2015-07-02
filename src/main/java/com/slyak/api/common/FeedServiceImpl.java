@@ -36,7 +36,6 @@ public class FeedServiceImpl implements FeedService {
             Class parameter0 = ClassUtils.getGenericParameter0(ftr.getClass());
             feedTemplateRendersMap.put(parameter0, ftr);
         }
-        new Feed();
     }
 
     @Override
