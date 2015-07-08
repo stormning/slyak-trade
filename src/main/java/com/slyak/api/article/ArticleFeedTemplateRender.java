@@ -2,6 +2,9 @@ package com.slyak.api.article;
 
 import com.slyak.api.common.FreemarkerFeedRender;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * .
  * <p/>
@@ -10,8 +13,9 @@ import com.slyak.api.common.FreemarkerFeedRender;
  * @version V1.0, 2015/7/2
  */
 public class ArticleFeedTemplateRender extends FreemarkerFeedRender<Article> {
+
     @Override
-    public String render(Article bizObj) {
+    public Map<Long, String> mrender(List<Article> value) {
         return null;
     }
 }
