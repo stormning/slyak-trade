@@ -1,8 +1,10 @@
 package com.slyak.api.common;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.slyak.bean.BizFetcher;
 import com.slyak.bean.BizKey;
+import com.slyak.bean.Bizable;
 import com.slyak.bean.Status;
 import com.slyak.core.ClassUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +29,12 @@ public class FeedServiceImpl implements FeedService {
     private FeedRepo feedRepo;
 
     @Autowired
-    private BizFetcher bizFetcher;
+    private BizFetcher<Bizable> bizFetcher;
 
-    private Map<Class, FeedTemplateRender> feedTemplateRendersMap = Maps.newHashMap();
+    private Map<Class, FeedTemplateRender<Bizable>> feedTemplateRendersMap = Maps.newHashMap();
 
-    public void setFeedTemplateRenders(List<FeedTemplateRender> feedTemplateRenders) {
-        for (FeedTemplateRender ftr : feedTemplateRenders) {
+    public void setFeedTemplateRenders(List<FeedTemplateRender<Bizable>> feedTemplateRenders) {
+        for (FeedTemplateRender<Bizable> ftr : feedTemplateRenders) {
             Class parameter0 = ClassUtils.getGenericParameter0(ftr.getClass());
             feedTemplateRendersMap.put(parameter0, ftr);
         }
@@ -40,16 +42,34 @@ public class FeedServiceImpl implements FeedService {
 
     @Override
     public Page<Feed> listAll(Pageable pageable) {
+
         Page<Feed> feedPage = feedRepo.findByStatus(Status.ENABLED, pageable);
 
         Map<BizKey, Feed> feeds = Maps.newHashMap();
         for (Feed feed : feedPage) {
             feeds.put(feed.getBizKey(), feed);
         }
-        Map<BizKey, ? extends BizKey> bizs = bizFetcher.mget(feeds.keySet());
-        for (Map.Entry<BizKey, ? extends BizKey> bke : bizs.entrySet()) {
-            BizKey value = bke.getValue();
-            feeds.get(bke.getKey()).setRendered(feedTemplateRendersMap.get(value.getClass()).render(value));
+
+        Map<BizKey, Bizable> bizs = bizFetcher.mget(feeds.keySet());
+        //biz objects
+        Map<Class<? extends Bizable>, List<Bizable>> bizObjects = Maps.newHashMap();
+        for (Bizable bizable : bizs.values()) {
+            List<Bizable> bos = bizObjects.get(bizable.getBiz());
+            if (bos == null) {
+                bos = Lists.newArrayList();
+                bizObjects.put(bizable.getClass(), bos);
+            }
+            bos.add(bizable);
+        }
+
+        for (Map.Entry<Class<? extends Bizable>, List<Bizable>> boe : bizObjects.entrySet()) {
+            FeedTemplateRender<Bizable> ftr = feedTemplateRendersMap.get(boe.getKey());
+            Map<Long, String> rendered = ftr.mrender(boe.getValue());
+            for (Map.Entry<Long, String> re : rendered.entrySet()) {
+                Long id = re.getKey();
+                Bizable first = boe.getValue().get(0);
+                feeds.get(new BizKey(first.getBiz(), id)).setRendered(rendered.get(id));
+            }
         }
         return feedPage;
     }

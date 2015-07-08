@@ -1,6 +1,9 @@
 package com.slyak.api.common;
 
-import com.slyak.bean.BizKey;
+import com.slyak.bean.Bizable;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * .
@@ -9,7 +12,7 @@ import com.slyak.bean.BizKey;
  * @author <a href="mailto:stormning@163.com">stormning</a>
  * @version V1.0, 2015/6/30
  */
-public interface FeedTemplateRender<T extends BizKey> {
+public interface FeedTemplateRender<T extends Bizable> {
 
-    String render(T bizObj);
+    Map<Long, String> mrender(List<T> value);
 }
