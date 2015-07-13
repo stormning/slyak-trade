@@ -1,6 +1,7 @@
 package com.slyak.api.article;
 
 import com.slyak.bean.Content;
+import com.slyak.util.Constants;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -16,4 +17,8 @@ import javax.persistence.Table;
 @Table(name = "t_article")
 public class Article extends Content {
 
+    @Override
+    public int getBiz() {
+        return Constants.Bizs.ARTICLE;
+    }
 }

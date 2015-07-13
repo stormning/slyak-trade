@@ -45,30 +45,33 @@ public class FeedServiceImpl implements FeedService {
 
         Page<Feed> feedPage = feedRepo.findByStatus(Status.ENABLED, pageable);
 
-        Map<BizKey, Feed> feeds = Maps.newHashMap();
-        for (Feed feed : feedPage) {
-            feeds.put(feed.getBizKey(), feed);
-        }
+        if (feedPage.hasContent()) {
 
-        Map<BizKey, Bizable> bizs = bizFetcher.mget(feeds.keySet());
-        //biz objects
-        Map<Class<? extends Bizable>, List<Bizable>> bizObjects = Maps.newHashMap();
-        for (Bizable bizable : bizs.values()) {
-            List<Bizable> bos = bizObjects.get(bizable.getBiz());
-            if (bos == null) {
-                bos = Lists.newArrayList();
-                bizObjects.put(bizable.getClass(), bos);
+            Map<BizKey, Feed> feeds = Maps.newHashMap();
+            for (Feed feed : feedPage) {
+                feeds.put(feed.getBizKey(), feed);
             }
-            bos.add(bizable);
-        }
 
-        for (Map.Entry<Class<? extends Bizable>, List<Bizable>> boe : bizObjects.entrySet()) {
-            FeedTemplateRender<Bizable> ftr = feedTemplateRendersMap.get(boe.getKey());
-            Map<Long, String> rendered = ftr.mrender(boe.getValue());
-            for (Map.Entry<Long, String> re : rendered.entrySet()) {
-                Long id = re.getKey();
-                Bizable first = boe.getValue().get(0);
-                feeds.get(new BizKey(first.getBiz(), id)).setRendered(rendered.get(id));
+            Map<BizKey, Bizable> bizs = bizFetcher.mget(feeds.keySet());
+            //biz objects
+            Map<Class<? extends Bizable>, List<Bizable>> bizObjects = Maps.newHashMap();
+            for (Bizable bizable : bizs.values()) {
+                List<Bizable> bos = bizObjects.get(bizable.getBiz());
+                if (bos == null) {
+                    bos = Lists.newArrayList();
+                    bizObjects.put(bizable.getClass(), bos);
+                }
+                bos.add(bizable);
+            }
+
+            for (Map.Entry<Class<? extends Bizable>, List<Bizable>> boe : bizObjects.entrySet()) {
+                FeedTemplateRender<Bizable> ftr = feedTemplateRendersMap.get(boe.getKey());
+                Map<Long, String> rendered = ftr.mrender(boe.getValue());
+                for (Map.Entry<Long, String> re : rendered.entrySet()) {
+                    Long id = re.getKey();
+                    Bizable first = boe.getValue().get(0);
+                    feeds.get(new BizKey(first.getBiz(), id)).setRendered(rendered.get(id));
+                }
             }
         }
         return feedPage;
